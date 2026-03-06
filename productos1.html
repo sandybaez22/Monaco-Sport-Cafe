@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Monaco Sport Cafe</title>
+    <link rel="icon" type="image/x-icon" href="favicon1.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --cafe-oscuro: #4B3D3D;
+            --cafe-claro: #D2691E;
+            --cafe-claro-hover: #b35919;
+            --texto-claro: #fff;
+            --texto-oscuro: #333;
+            --sombra: 0 4px 8px rgba(0, 0, 0, 0.2);
+            --sombra-hover: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --transicion: all 0.3s ease;
+            --verde: #4CAF50;
+            --verde-hover: #45a049;
+            --azul: #2196F3;
+            --azul-hover: #0b7dda;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--cafe-oscuro);
+            font-family: 'Poppins', sans-serif;
+            color: var(--texto-claro);
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(rgba(75, 61, 61, 0.9), rgba(75, 61, 61, 0.7));
+            width: 100%;
+            box-shadow: var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            font-family: 'Lobster', cursive;
+            color: var(--texto-claro);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slogan {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--cafe-claro);
+            margin-top: 10px;
+        }
+        
+        .producto-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .producto {
+            background: linear-gradient(145deg, rgba(75, 61, 61, 0.8), rgba(75, 61, 61, 0.6));
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            position: relative;
+        }
+        
+        .producto:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-hover);
+        }
+        
+        .producto-imagen {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: var(--transicion);
+        }
+        
+        .producto:hover .producto-imagen {
+            transform: scale(1.05);
+        }
+        
+        .producto-info {
+            padding: 20px;
+            position: relative;
+        }
+        
+        .producto h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--texto-claro);
+            font-weight: 600;
+        }
+        
+        .precio {
+            font-size: 1.3rem;
+            color: var(--cafe-claro);
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        .producto p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #e0e0e0;
+        }
+        
+        .botones-producto {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .boton-comprar {
+            background: linear-gradient(to right, var(--cafe-claro), var(--cafe-claro-hover));
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transicion);
+            flex: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .boton-comprar:hover {
+            background: linear-gradient(to right, var(--cafe-claro-hover), var(--cafe-claro));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
+        }
+        
+        .boton-comprar-ahora {
+            background: linear-gradient(to right, var(--azul), var(--azul-hover));
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transicion);
+            flex: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .boton-comprar-ahora:hover {
+            background: linear-gradient(to right, var(--azul-hover), var(--azul));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+        }
+        
+        .boton-comprar i,
+        .boton-comprar-ahora i {
+            margin-right: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .etiqueta-popular {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4757;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        /* Modal de pago compacto */
+        
+        .modal {
+            display: none;
+            /* o flex cuando lo necesites */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* capa oscura */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-blur {
+            background-color: rgba(255, 255, 255, 0.1);
+            /* fondo claro semitransparente */
+            -webkit-backdrop-filter: blur(10px);
+            /* para Safari */
+            backdrop-filter: blur(10px);
+            /* para otros navegadores */
+            padding: 30px;
+            border-radius: 12px;
+            color: white;
+        }
+        
+        .modal-contenido {
+            background: linear-gradient(145deg, #5a4a4a, #3d3131);
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: modalEntrada 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes modalEntrada {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .cerrar-modal {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 1.3rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: var(--transicion);
+            background: rgba(0, 0, 0, 0.2);
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .cerrar-modal:hover {
+            color: var(--texto-claro);
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .modal-titulo {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--cafe-claro);
+            text-align: center;
+            font-family: 'Lobster', cursive;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .modal-titulo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--cafe-claro), transparent);
+        }
+        
+        .resumen-compra {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .resumen-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        
+        .resumen-total {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--cafe-claro);
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+            padding-top: 8px;
+            margin-top: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--cafe-claro);
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--texto-claro);
+            font-size: 0.9rem;
+            transition: var(--transicion);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--cafe-claro);
+            box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.3);
+        }
+        
+        .metodos-pago {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .metodo-pago {
+            text-align: center;
+            padding: 12px 8px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transicion);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .metodo-pago:hover,
+        .metodo-pago.activo {
+            border-color: var(--cafe-claro);
+            background: rgba(210, 105, 30, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .metodo-pago i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--cafe-claro);
+        }
+        
+        .metodo-pago p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--texto-claro);
+            font-size: 0.8rem;
+        }
+        
+        .datos-pago {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .grupo-tarjeta {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .grupo-tarjeta>div {
+            flex: 1;
+        }
+        
+        .boton-confirmar {
+            background: linear-gradient(to right, var(--verde), var(--verde-hover));
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transicion);
+            width: 100%;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .boton-confirmar i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .boton-confirmar:hover {
+            background: linear-gradient(to right, var(--verde-hover), var(--verde));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        .boton-seguir-comprando {
+            background: transparent;
+            color: var(--cafe-claro);
+            border: 1px solid var(--cafe-claro);
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transicion);
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .boton-seguir-comprando:hover {
+            background: rgba(210, 105, 30, 0.1);
+        }
+        
+        .carrito-flotante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--cafe-claro);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(210, 105, 30, 0.5);
+            cursor: pointer;
+            z-index: 99;
+            transition: var(--transicion);
+        }
+        
+        .carrito-flotante:hover {
+            transform: scale(1.1);
+            background-color: var(--cafe-claro-hover);
+        }
+        
+        .carrito-flotante i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .contador-carrito {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff4757;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .producto-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                padding: 15px;
+                gap: 20px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .modal-contenido {
+                width: 95%;
+                padding: 15px;
+                max-height: 85vh;
+            }
+            .botones-producto {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .boton-comprar,
+            .boton-comprar-ahora {
+                width: 100%;
+                padding: 10px;
+            }
+            .metodos-pago {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Productos</h1>
+        <p class="slogan">Sabores que inspiran momentos especiales</p>
+    </header>
+
+    <div class="producto-container">
+        <!-- Producto 1 -->
+        <div class="producto">
+            <span class="etiqueta-popular">POPULAR</span>
+            <img src="nachos.jpg" alt="Nachos" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Nachos Especiales</h2>
+                <p class="precio">$280</p>
+                <p>Deliciosos nachos crujientes acompañados de queso fundido, guacamole casero y salsa picante.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="producto">
+            <img src="papasfritas.jpg" alt="Papas fritas" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Papas Fritas Gourmet</h2>
+                <p class="precio">$250</p>
+                <p>Papas fritas crujientes con piel, sazonadas con romero y ajo, acompañadas de mayonesa de hierbas.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="producto">
+            <span class="etiqueta-popular">NUEVO</span>
+            <img src="alitasdepollo.jpg" alt="Alitas de pollo" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Alitas BBQ</h2>
+                <p class="precio">$325</p>
+                <p>Alitas de pollo crujientes bañadas en nuestra exclusiva salsa BBQ ahumada, acompañadas de apio y aderezo ranch.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="producto">
+            <img src="platomixto.jpg" alt="Plato Mixto" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Combinado Familiar</h2>
+                <p class="precio">$285</p>
+                <p>Una selección de nuestros mejores aperitivos: nachos, alitas, papas y dedos de queso, perfecto para compartir.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 5 -->
+        <div class="producto">
+            <img src="hamburguesa.jpg" alt="Hamburguesa" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Hamburguesa Clásica</h2>
+                <p class="precio">$225</p>
+                <p>Jugosa hamburguesa de carne 100% res con queso cheddar, lechuga, tomate y nuestra salsa especial.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Nachos Cargados.jpeg" alt="Nachos Cargados" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Nachos Cargados (Loaded Nachos)</h2>
+                <p class="precio">$170</p>
+                <p>Los Nachos Cargados son un platillo de botana o comida rápida que consiste en totopos de maíz cubiertos con una generosa porción de ingredientes calientes y fríos.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="waffle.jpg" alt="Waffle" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Waffle</h2>
+                <p class="precio">$255</p>
+                <p>Crujiente por fuera, suave por dentro… bañado en chocolate y coronado con malvaviscos derretidos.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Belgian Waffles.jpg" alt="Belgian Waffles" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Belgian Waffles</h2>
+                <p class="precio">$345</p>
+                <p> Perfectos para acompañar con frutas, chocolate o lo que tu antojo dicte… ¡una delicia belga en tu mesa!</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Churros Rellenos de Dulce de Leche.jpg" alt="Churros Rellenos de Dulce de Leche" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Churros Rellenos de Dulce de Leche</h2>
+                <p class="precio">$275</p>
+                <p>Deléitate con nuestros churros crujientes por fuera y rellenos con cremoso dulce de leche que se derrite en tu boca.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Brownie de chocolate con nueces.jpeg" alt="Brownie de chocolate con nueces" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Brownie de chocolate con nueces</h2>
+                <p class="precio">$125</p>
+                <p>El brownie de chocolate con nueces es un pastelito suave y denso, con intenso sabor a chocolate.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Galletas de avena.jpeg" alt="Galletas de avena" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Galletas de avena</h2>
+                <p class="precio">$110</p>
+                <p>Las galletas de avena son crujientes por fuera y suaves por dentro, elaboradas con avena natural.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="PASTEL DE CHOCOLATE CON RELLENO DE FRESA.jpeg" alt="pastel de chocolate con relleno de fersa" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Pastel de chocolate con relleno de fresa</h2>
+                <p class="precio">$150</p>
+                <p>Paste de chocolate con relleno de fresa es un delicioso bocadillo con una suave capa de chocolate y un corazón cremoso de fresa.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Cup cakes de fresa.jpeg" alt="Cup cakes de fresa" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Cup cakes con fresa</h2>
+                <p class="precio">$150</p>
+                <p>Cupcakes con fresa esponjosos y delicadamente horneados, decorados con crema y trozos de fresa fresca.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Panna Cotta.jpeg" alt="Panna Cotta" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Panna cotta</h2>
+                <p class="precio">$150</p>
+                <p>Panna cotta es un postre italiano suave y cremoso, elaborado a base de nata endulzada y gelatina. Su textura sedosa se combina perfectamente con frutas o salsas.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Macarons Franceses.jpeg" alt="Macarrons Franceses" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Macarons Franceses</h2>
+                <p class="precio">$135</p>
+                <p>Panna cotta es un postre italiano suave y cremoso, elaborado a base de nata endulzada y gelatina. Su textura sedosa se combina perfectamente con frutas o salsas.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 6 -->
+        <div class="producto">
+            <span class="etiqueta-popular">REFRESCO</span>
+            <img src="icedtea.jpg" alt="Iced Tea" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Iced Tea Premium</h2>
+                <p class="precio">$125</p>
+                <p>Refrescante té helado preparado con hojas de té negro de alta calidad y un toque de limón natural.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 7 -->
+        <div class="producto">
+            <img src="cappuccino.jpg" alt="Cappuccino" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Cappuccino Italiano</h2>
+                <p class="precio">$150</p>
+                <p>Auténtico cappuccino preparado con espresso arábica y leche vaporizada con una suave capa de espuma.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 8 -->
+        <div class="producto">
+            <img src="icedcapuccino.jpg" alt="Iced Cappuccino" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Iced Cappuccino</h2>
+                <p class="precio">$105</p>
+                <p>La versión fría de nuestro clásico cappuccino, perfecto para los días calurosos.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 9 -->
+        <div class="producto">
+            <span class="etiqueta-popular">TENDENCIA</span>
+            <img src="matchalatte.jpg" alt="Matcha latte" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Matcha Latte</h2>
+                <p class="precio">$100</p>
+                <p>Bebida cremosa preparada con auténtico matcha japonés grado ceremonial y leche al vapor.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 10 -->
+        <div class="producto">
+            <img src="mochaccino.jpg" alt="Mochaccino" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Mochaccino</h2>
+                <p class="precio">$150</p>
+                <p>Deliciosa combinación de espresso, leche vaporizada y chocolate belga, coronado con crema batida.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 11 -->
+        <div class="producto">
+            <img src="mochiano.jpg" alt="Mochiano" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Mochiano</h2>
+                <p class="precio">$50</p>
+                <p>Nuestra versión mini del mochaccino, perfecto para un rápido impulso de energía.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 12 -->
+        <div class="producto">
+            <img src="mochalatte.jpg" alt="Mocha latte" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Mocha Latte</h2>
+                <p class="precio">$160</p>
+                <p>Exquisita combinación de espresso, leche al vapor y jarabe de chocolate artesanal.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 13 -->
+        <div class="producto">
+            <img src="macchiatoice.jpg" alt="Macchiato Ice" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Macchiato Ice</h2>
+                <p class="precio">$150</p>
+                <p>Refrescante bebida de espresso con un toque de leche fría y caramelo, perfectamente equilibrada.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 14 -->
+        <div class="producto">
+            <img src="lemontea.jpg" alt="Lemon Tea" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Lemon Tea Fresco</h2>
+                <p class="precio">$75</p>
+                <p>Té negro infusionado con limón fresco y un toque de miel, servido sobre hielo.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 15 -->
+        <div class="producto">
+            <span class="etiqueta-popular">FAVORITO</span>
+            <img src="frapuccino.jpg" alt="Frapuccino" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Frapuccino</h2>
+                <p class="precio">$150</p>
+                <p>Bebida cremosa y refrescante a base de café, hielo y leche, coronada con crema batida.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <span class="etiqueta-popular">FAVORITO</span>
+            <img src="Cafe Helado Cremoso.jpeg" alt="Cafe helado cremoso" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Cafe helado cremoso</h2>
+                <p class="precio">$195</p>
+                <p>Café helado cremoso, una bebida refrescante con el intenso sabor del café y una textura suave y espumosa.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <span class="etiqueta-popular">FAVORITO</span>
+            <img src="Caramel Crunch Freakshakes.jpg" alt="Caramel Crunch Freakshakes" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Caramel Crunch Freakshakes</h2>
+                <p class="precio">$395</p>
+                <p> Un batido monstruoso cargado de helado, caramelo derretido y crujientes trozos de galleta.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <span class="etiqueta-popular">FAVORITO</span>
+            <img src="Strawberry shake.jpg" alt="Strawberry shake" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Strawberry shake</h2>
+                <p class="precio">$100</p>
+                <p>Un clásico batido de fresa, cremoso y refrescante, hecho con fruta natural y leche suave.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <span class="etiqueta-popular">FAVORITO</span>
+            <img src="Banana Split Milkshakes.jpg" alt="Banana Split Milkshakes" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Banana Split Milkshakes</h2>
+                <p class="precio">$95</p>
+                <p> Un batido inspirado en el postre clásico, con plátano, chocolate, fresa y un toque de crema batida.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <span class="etiqueta-popular">FAVORITO</span>
+            <img src="Smoothie de Mango y Piña.jpeg" alt="Smoothie de Mango y Piña" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Smoothie de Mango y Piña</h2>
+                <p class="precio">$85</p>
+                <p>El smoothie de mango y piña es una bebida tropical, cremosa y refrescante, hecha con frutas naturales.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Frappuccino de Cookies y Cream.jpeg" alt="Frappuccino de Cookies y Cream" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Frappuccino de Cookies y Cream</h2>
+                <p class="precio">$125</p>
+                <p>Frappuccino con cookies and cream, una mezcla helada y cremosa con trozos de galleta que se derriten en cada sorbo.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="Batidos bicolor de vainilla y fresa.jpeg" alt="Batidos bicolor de vainilla y fresa" class="producto-imagen">
+            <div class="producto-info">
+                <h2>Batidos bicolor de vainilla y fresa</h2>
+                <p class="precio">$145</p>
+                <p>Batido bicolor de vainilla y fresa, una combinación deliciosa y visualmente atractiva de dos sabores clásicos.</p>
+                <div class="botones-producto">
+                    <button class="boton-comprar"><i class="fas fa-cart-plus"></i> Añadir</button>
+                    <button class="boton-comprar-ahora"><i class="fas fa-bolt"></i> Comprar</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Resto de productos... -->
+    <!-- (Mantener la misma estructura para los otros 14 productos) -->
+
+
+
+    <!-- Carrito flotante -->
+    <div class="carrito-flotante" id="carritoBtn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="contador-carrito" id="contadorCarrito">0</span>
+    </div>
+
+    <!-- Modal de pago compacto -->
+    <div class="modal" id="modalPago">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrarModal">&times;</span>
+            <h2 class="modal-titulo">Finalizar Compra</h2>
+
+            <div class="resumen-compra" id="resumenCompra">
+                <!-- El resumen se generará dinámicamente -->
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Ingresa tu nombre">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" placeholder="Ingresa tu email">
+            </div>
+
+            <div class="form-group">
+                <label>Método de pago</label>
+                <div class="metodos-pago">
+                    <div class="metodo-pago" data-metodo="tarjeta">
+                        <i class="fas fa-credit-card"></i>
+                        <p>Tarjeta</p>
+                    </div>
+                    <div class="metodo-pago" data-metodo="paypal">
+                        <i class="fab fa-paypal"></i>
+                        <p>PayPal</p>
+                    </div>
+                    <div class="metodo-pago" data-metodo="transferencia">
+                        <i class="fas fa-university"></i>
+                        <p>Transferencia</p>
+                    </div>
+                    <div class="metodo-pago" data-metodo="efectivo">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <p>Efectivo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="datos-pago" id="datosTarjeta">
+                <div class="form-group">
+                    <label for="numero-tarjeta">Número de tarjeta</label>
+                    <input type="text" id="numero-tarjeta" placeholder="1234 5678 9012 3456">
+                </div>
+
+                <div class="grupo-tarjeta">
+                    <div class="form-group">
+                        <label for="fecha-expiracion">Fecha expiración</label>
+                        <input type="text" id="fecha-expiracion" placeholder="MM/AA">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123">
+                    </div>
+                </div>
+            </div>
+
+            <div class="datos-pago" id="datosPaypal">
+                <p style="text-align: center; margin-bottom: 10px;">
+                    <i class="fab fa-paypal" style="font-size: 1.8rem; color: #003087;"></i>
+                </p>
+                <p style="text-align: center; font-size: 0.9rem;">Serás redirigido a PayPal para completar tu pago de manera segura.</p>
+            </div>
+
+            <button class="boton-confirmar" id="confirmarCompra">
+                <i class="fas fa-check-circle"></i> Confirmar Compra
+            </button>
+
+            <button class="boton-seguir-comprando" id="seguirComprando">
+                <i class="fas fa-arrow-left"></i> Seguir comprando
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Simulación de base de datos de productos
+        const productos = [{
+            id: 1,
+            nombre: "Nachos Especiales",
+            precio: 275,
+            imagen: "nachos.jpg"
+        }, {
+            id: 2,
+            nombre: "Papas Fritas Gourmet",
+            precio: 250,
+            imagen: "papasfritas.jpg"
+        }, {
+            id: 3,
+            nombre: "Alitas BBQ",
+            precio: 350,
+            imagen: "alitasdepollo.jpg"
+        }, {
+            id: 4,
+            nombre: "Combinado Familiar",
+            precio: 400,
+            imagen: "platomixto.jpg"
+        }, {
+            id: 5,
+            nombre: "Hamburguesa Clásica",
+            precio: 300,
+            imagen: "hamburguesa.jpg"
+        }, {
+            id: 6,
+            nombre: "Iced Tea Premium",
+            precio: 125,
+            imagen: "icedtea.jpg"
+        }, {
+            id: 7,
+            nombre: "Cappuccino Italiano",
+            precio: 150,
+            imagen: "cappuccino.jpg"
+        }, {
+            id: 8,
+            nombre: "Iced Cappuccino",
+            precio: 150,
+            imagen: "icedcapuccino.jpg"
+        }, {
+            id: 9,
+            nombre: "Matcha Latte",
+            precio: 100,
+            imagen: "matchalatte.jpg"
+        }, {
+            id: 10,
+            nombre: "Mochaccino",
+            precio: 150,
+            imagen: "mochaccino.jpg"
+        }, {
+            id: 11,
+            nombre: "Mochiano",
+            precio: 50,
+            imagen: "mochiano.jpg"
+        }, {
+            id: 12,
+            nombre: "Mocha Latte",
+            precio: 150,
+            imagen: "mochalatte.jpg"
+        }, {
+            id: 13,
+            nombre: "Macchiato Ice",
+            precio: 150,
+            imagen: "macchiatoice.jpg"
+        }, {
+            id: 14,
+            nombre: "Lemon Tea Fresco",
+            precio: 75,
+            imagen: "lemontea.jpg"
+        }, {
+            id: 15,
+            nombre: "Frapuccino",
+            precio: 150,
+            imagen: "frapuccino.jpg"
+        }];
+
+        // Carrito de compras
+        let carrito = [];
+        let productoParaComprarAhora = null;
+
+        // Elementos del DOM
+        const botonesComprar = document.querySelectorAll('.boton-comprar');
+        const botonesComprarAhora = document.querySelectorAll('.boton-comprar-ahora');
+        const carritoBtn = document.getElementById('carritoBtn');
+        const contadorCarrito = document.getElementById('contadorCarrito');
+        const modalPago = document.getElementById('modalPago');
+        const cerrarModal = document.getElementById('cerrarModal');
+        const metodosPago = document.querySelectorAll('.metodo-pago');
+        const datosTarjeta = document.getElementById('datosTarjeta');
+        const datosPaypal = document.getElementById('datosPaypal');
+        const confirmarCompra = document.getElementById('confirmarCompra');
+        const resumenCompra = document.getElementById('resumenCompra');
+        const seguirComprando = document.getElementById('seguirComprando');
+
+        // Event listeners
+        botonesComprar.forEach((boton, index) => {
+            boton.addEventListener('click', () => {
+                agregarAlCarrito(productos[index]);
+            });
+        });
+
+        botonesComprarAhora.forEach((boton, index) => {
+            boton.addEventListener('click', () => {
+                productoParaComprarAhora = productos[index];
+                carrito = [{...productos[index],
+                    cantidad: 1
+                }];
+                actualizarCarrito();
+                mostrarModalPago();
+            });
+        });
+
+        carritoBtn.addEventListener('click', () => {
+            if (carrito.length > 0) {
+                productoParaComprarAhora = null;
+                mostrarModalPago();
+            } else {
+                mostrarNotificacion('Tu carrito está vacío. Añade algunos productos primero.', 'info');
+            }
+        });
+
+        cerrarModal.addEventListener('click', () => {
+            cerrarModalPago();
+        });
+
+        seguirComprando.addEventListener('click', () => {
+            cerrarModalPago();
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modalPago) {
+                cerrarModalPago();
+            }
+        });
+
+        metodosPago.forEach(metodo => {
+            metodo.addEventListener('click', () => {
+                metodosPago.forEach(m => m.classList.remove('activo'));
+                metodo.classList.add('activo');
+
+                // Ocultar todos los paneles de datos de pago
+                document.querySelectorAll('.datos-pago').forEach(panel => {
+                    panel.style.display = 'none';
+                });
+
+                // Mostrar el panel correspondiente al método seleccionado
+                if (metodo.dataset.metodo === 'tarjeta') {
+                    datosTarjeta.style.display = 'block';
+                } else if (metodo.dataset.metodo === 'paypal') {
+                    datosPaypal.style.display = 'block';
+                }
+            });
+        });
+
+        confirmarCompra.addEventListener('click', finalizarCompra);
+
+        // Funciones
+        function agregarAlCarrito(producto) {
+            const productoEnCarrito = carrito.find(item => item.id === producto.id);
+
+            if (productoEnCarrito) {
+                productoEnCarrito.cantidad++;
+            } else {
+                carrito.push({...producto,
+                    cantidad: 1
+                });
+            }
+
+            actualizarCarrito();
+            mostrarNotificacion(`¡${producto.nombre} añadido al carrito!`, 'success');
+        }
+
+        function actualizarCarrito() {
+            contadorCarrito.textContent = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+        }
+
+        function mostrarModalPago() {
+            // Generar resumen de compra
+            let htmlResumen = '';
+            let subtotal = 0;
+
+            carrito.forEach(producto => {
+                const totalProducto = producto.precio * producto.cantidad;
+                subtotal += totalProducto;
+
+                htmlResumen += `
+                    <div class="resumen-item">
+                        <span>${producto.nombre} x${producto.cantidad}</span>
+                        <span>$${totalProducto}</span>
+                    </div>
+                `;
+            });
+
+            const iva = subtotal * 0.16; // 16% de IVA
+            const total = subtotal + iva;
+
+            htmlResumen += `
+                <div class="resumen-item">
+                    <span>Subtotal</span>
+                    <span>$${subtotal.toFixed(2)}</span>
+                </div>
+                <div class="resumen-item">
+                    <span>IVA (16%)</span>
+                    <span>$${iva.toFixed(2)}</span>
+                </div>
+                <div class="resumen-item resumen-total">
+                    <span>Total</span>
+                    <span>$${total.toFixed(2)}</span>
+                </div>
+            `;
+
+            resumenCompra.innerHTML = htmlResumen;
+
+            // Mostrar modal
+            modalPago.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Evitar scroll del fondo
+
+            // Resetear selección de método de pago
+            metodosPago.forEach(m => m.classList.remove('activo'));
+            document.querySelectorAll('.datos-pago').forEach(panel => {
+                panel.style.display = 'none';
+            });
+        }
+
+        function cerrarModalPago() {
+            modalPago.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+
+        function finalizarCompra() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const metodoSeleccionado = document.querySelector('.metodo-pago.activo');
+
+            if (!nombre || !email || !metodoSeleccionado) {
+                mostrarNotificacion('Por favor completa todos los campos y selecciona un método de pago.', 'error');
+                return;
+            }
+
+            if (metodoSeleccionado.dataset.metodo === 'tarjeta') {
+                const numeroTarjeta = document.getElementById('numero-tarjeta').value;
+                const fechaExpiracion = document.getElementById('fecha-expiracion').value;
+                const cvv = document.getElementById('cvv').value;
+
+                if (!numeroTarjeta || !fechaExpiracion || !cvv) {
+                    mostrarNotificacion('Por favor completa los datos de la tarjeta.', 'error');
+                    return;
+                }
+            }
+
+            // Calcular total
+            const subtotal = carrito.reduce((sum, producto) => sum + (producto.precio * producto.cantidad), 0);
+            const iva = subtotal * 0.16;
+            const total = subtotal + iva;
+
+            // Mostrar mensaje de confirmación
+            let mensaje = `¡Compra exitosa!\n\nGracias por tu compra, ${nombre}.\n`;
+
+            if (productoParaComprarAhora) {
+                mensaje += `Producto: ${productoParaComprarAhora.nombre}\n`;
+            } else {
+                mensaje += `Productos: ${carrito.length} artículos\n`;
+            }
+
+            mensaje += `Total: $${total.toFixed(2)}\n`;
+            mensaje += `Método de pago: ${metodoSeleccionado.querySelector('p').textContent}\n\n`;
+            mensaje += `Recibirás un correo de confirmación en ${email}`;
+
+            mostrarNotificacion(mensaje, 'success');
+
+            // Limpiar carrito
+            carrito = [];
+            productoParaComprarAhora = null;
+            actualizarCarrito();
+            cerrarModalPago();
+
+            // Limpiar formulario
+            document.getElementById('nombre').value = '';
+            document.getElementById('email').value = '';
+            metodosPago.forEach(m => m.classList.remove('activo'));
+            document.getElementById('numero-tarjeta').value = '';
+            document.getElementById('fecha-expiracion').value = '';
+            document.getElementById('cvv').value = '';
+            document.querySelectorAll('.datos-pago').forEach(panel => {
+                panel.style.display = 'none';
+            });
+        }
+
+        function mostrarNotificacion(mensaje, tipo) {
+            const notificacion = document.createElement('div');
+            notificacion.style.position = 'fixed';
+            notificacion.style.bottom = '20px';
+            notificacion.style.left = '50%';
+            notificacion.style.transform = 'translateX(-50%)';
+            notificacion.style.padding = '12px 20px';
+            notificacion.style.borderRadius = '8px';
+            notificacion.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+            notificacion.style.zIndex = '1000';
+            notificacion.style.transition = 'all 0.4s ease';
+            notificacion.style.maxWidth = '90%';
+            notificacion.style.textAlign = 'center';
+            notificacion.style.whiteSpace = 'pre-line';
+            notificacion.style.fontSize = '0.9rem';
+
+            // Estilos según el tipo
+            if (tipo === 'success') {
+                notificacion.style.backgroundColor = '#4CAF50';
+                notificacion.style.color = 'white';
+            } else if (tipo === 'error') {
+                notificacion.style.backgroundColor = '#ff4757';
+                notificacion.style.color = 'white';
+            } else if (tipo === 'info') {
+                notificacion.style.backgroundColor = '#2196F3';
+                notificacion.style.color = 'white';
+            }
+
+            notificacion.textContent = mensaje;
+
+            document.body.appendChild(notificacion);
+
+            setTimeout(() => {
+                notificacion.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notificacion);
+                }, 400);
+            }, 3000);
+        }
+
+        // Inicializar
+        document.querySelectorAll('.datos-pago').forEach(panel => {
+            panel.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
