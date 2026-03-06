@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos Deportivos | Monaco Sport Café</title>
+    <link rel="icon" type="image/x-icon" href="favicon1.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lobster&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --cafe: #8B5A2B;
+            --dorado: #D4AF37;
+            --negro: #1A1A1A;
+            --blanco: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--negro);
+            color: var(--blanco);
+            overflow-x: hidden;
+        }
+        /* Header */
+        
+        header {
+            background: rgba(26, 26, 26, 0.9);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-family: 'Lobster', cursive;
+            font-size: 2rem;
+            color: var(--dorado);
+            text-decoration: none;
+        }
+        
+        .menu a {
+            color: var(--blanco);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .menu a:hover {
+            color: var(--dorado);
+        }
+        /* Hero Section */
+        
+        .hero-events {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-events h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 4rem;
+            color: var(--dorado);
+            margin-bottom: 20px;
+        }
+        /* Eventos Section */
+        
+        .events-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-family: 'Lobster', cursive;
+            font-size: 3rem;
+            color: var(--dorado);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .event-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .event-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        }
+        
+        .event-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .event-content {
+            padding: 20px;
+        }
+        
+        .event-date {
+            color: var(--dorado);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .event-date i {
+            margin-right: 10px;
+        }
+        
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .event-description {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--dorado);
+            color: var(--negro);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--cafe);
+            color: var(--blanco);
+        }
+        /* Newsletter Section */
+        
+        .newsletter {
+            background: linear-gradient(rgba(139, 90, 43, 0.8), rgba(139, 90, 43, 0.9)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter h2 {
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+            color: var(--dorado);
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: var(--dorado);
+            color: var(--negro);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--negro);
+            color: var(--dorado);
+        }
+        /* Footer */
+        
+        footer {
+            background: var(--negro);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: var(--blanco);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--dorado);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-events h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Monaco Sport Café</a>
+            <nav class="menu">
+                <a href="#">Inicio</a>
+                <a href="#eventos">Eventos</a>
+                <a href="#notificaciones">Notificaciones</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-events">
+        <div>
+            <h1>Eventos Deportivos</h1>
+            <p>Vive la emoción de los mejores partidos con nosotros</p>
+        </div>
+    </section>
+
+    <!-- Eventos Section -->
+    <section class="events-section" id="eventos">
+        <h2 class="section-title">Próximos Eventos</h2>
+
+        <div class="event-cards">
+            <!-- Evento 1 -->
+            <div class="event-card">
+                <img src="Final champions league.jpg" alt="Final Champions" class="event-img">
+                <div class="event-content">
+                    <div class="event-date">
+                        <i class="far fa-calendar-alt"></i> 1 Junio 2025 - 14:00 hrs
+                    </div>
+                    <h3 class="event-title">Final Champions League</h3>
+                    <p class="event-description">
+                        Transmisión en pantalla gigante con promociones especiales en bebidas y comida.
+                    </p>
+                    <a href="#notificaciones" class="btn">Recibir Recordatorio</a>
+                </div>
+            </div>
+
+            <!-- Evento 2 -->
+            <div class="event-card">
+                <img src="Super Bowl 2025.jpeg" alt="Super Bowl" class="event-img">
+                <div class="event-content">
+                    <div class="event-date">
+                        <i class="far fa-calendar-alt"></i> 11 septiembre 2025 - 17:30 hrs
+                    </div>
+                    <h3 class="event-title">Super Bowl LVIII</h3>
+                    <p class="event-description">
+                        Noche especial con menú temático y concurso de pronósticos con premios.
+                    </p>
+                    <a href="#notificaciones" class="btn">Recibir Recordatorio</a>
+                </div>
+            </div>
+
+            <!-- Evento 3 -->
+            <div class="event-card">
+                <img src="Carreras F1.jpeg" alt="F1 Monaco" class="event-img">
+                <div class="event-content">
+                    <div class="event-date">
+                        <i class="far fa-calendar-alt"></i> 26 Mayo 2025 - 08:00 hrs
+                    </div>
+                    <h3 class="event-title">Gran Premio de Mónaco F1</h3>
+                    <p class="event-description">
+                        Desayuno especial para ver la carrera con análisis de expertos en vivo.
+                    </p>
+                    <a href="#notificaciones" class="btn">Recibir Recordatorio</a>
+                </div>
+            </div>
+
+            <!-- Evento 4 -->
+            <div class="event-card">
+                <img src="NBA Finals.jpeg" alt="NBA Finals" class="event-img">
+                <div class="event-content">
+                    <div class="event-date">
+                        <i class="far fa-calendar-alt"></i> 6 Junio 2025 - 20:00 hrs
+                    </div>
+                    <h3 class="event-title">Finales NBA</h3>
+                    <p class="event-description">
+                        Promoción 2x1 en cervezas artesanales durante el partido.
+                    </p>
+                    <a href="#notificaciones" class="btn">Recibir Recordatorio</a>
+                </div>
+            </div>
+
+            <!-- Evento 5 -->
+            <div class="event-card">
+                <img src="FC24.jpeg" alt="Torneo FIFA" class="event-img">
+                <div class="event-content">
+                    <div class="event-date">
+                        <i class="far fa-calendar-alt"></i> 15 Julio 2025 - 16:00 hrs
+                    </div>
+                    <h3 class="event-title">Torneo FIFA 24</h3>
+                    <p class="event-description">
+                        Inscríbete a nuestro torneo con premios en efectivo y productos exclusivos.
+                    </p>
+                    <a href="#notificaciones" class="btn">Recibir Recordatorio</a>
+                </div>
+            </div>
+
+            <!-- Evento 6 -->
+            <div class="event-card">
+                <img src="Noche de Box.jpeg" alt="Noche de Box" class="event-img">
+                <div class="event-content">
+                    <div class="event-date">
+                        <i class="far fa-calendar-alt"></i> 20 Agosto 2025 - 21:00 hrs
+                    </div>
+                    <h3 class="event-title">Noche de Box VIP</h3>
+                    <p class="event-description">
+                        Peleas exclusivas con transmisión en 4K y menú premium para socios.
+                    </p>
+                    <a href="#notificaciones" class="btn">Recibir Recordatorio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="notificaciones">
+        <div class="newsletter-container">
+            <h2>¡No te pierdas ningún evento!</h2>
+            <p>Regístrate para recibir notificaciones exclusivas sobre nuestros eventos deportivos y promociones especiales.</p>
+
+            <form class="newsletter-form" id="notifyForm">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="tel" placeholder="WhatsApp (opcional)">
+                <button type="submit">Quiero Notificaciones</button>
+            </form>
+
+            <p style="margin-top: 20px; font-size: 0.9rem;">
+                <i class="fas fa-lock"></i> Tus datos están seguros con nosotros.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1V9rcmBB89/?mibextid=wwXIfr" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/monacosportcafe?igsh=MWNsbmlwdXVscTNzaQ%3D%3D&utm_source=qr" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/monaco84527?s=21" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+            <a href="https://wa.me/15559872345" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p class="copyright">© 2024 Monaco Sport Café. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Formulario de notificaciones
+        document.getElementById('notifyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por registrarte! Te notificaremos cuando comiencen los eventos.');
+            this.reset();
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animación de cards al hacer scroll
+        const animateCards = () => {
+            const cards = document.querySelectorAll('.event-card');
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Inicializar animaciones
+        window.addEventListener('scroll', animateCards);
+        document.querySelectorAll('.event-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease';
+        });
+    </script>
+</body>
+
+</html>
